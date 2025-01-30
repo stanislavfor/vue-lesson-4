@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/normalise.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+    <div id="app" class="wrapper">
+        <header class="header" id="blog-section">
+            <div class="container">
+                <div class="header__inner">
+                    <picture> <img class="header__logo" src="images/logo.png" alt=""> </picture>
+                    <nav class="header__nav">
+                        <ul class="header__nav-list header__list">
+                            <li class="header__list-item"> <a class="header__list-link" href="projects.html">Проекты</a> </li>
+                            <li class="header__list-item"> <a class="header__list-link" href="index.html#achievements">Наши успехи</a> </li>
+                            <li class="header__list-item"> <a class="header__list-link" href="index.html#main-section">Домой</a> </li>
+                            <li class="header__list-item"> <a class="header__list-link" href="#contact-section">Контакты</a> </li>
+                        </ul>
+                        <div class="icon-menu"> <span></span> <span></span> <span></span> </div>
+                    </nav>
+                    <div class="header__plate"></div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <section class="main-blog-details-section"></section>
+            <section class="main-blog-details">
+                <div class="blog-details">
+                    <blog-posts :posts="filteredPosts"></blog-posts>
+                </div>
+                <div class="sidebar">
+                    <h2>Тэги</h2>
+                    <button class="smooth-button" v-for="tag in tags" :key="tag" @click="filterPosts(tag)">{{ tag }}</button>
+                    <button class="smooth-button" @click="filterPosts('')">Все Тэги</button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer" id="contact-section">
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="footer__logo">
+                        <picture> <img class="footer__logo-img" src="images/logo.png" alt=""> </picture>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="footer__logo-text"></p>
+                        <div class="header__list-item"> <a class="header__list-link" href="index.html#main-section">Домой</a> </div>
+                        <br>
+                        <div class="header__list-item"> <a class="header__list-link" href="projects.html">Проекты</a> </div>
+                        <br>
+                        <div class="header__list-item"> <a class="header__list-link" href="blog.html">Блог</a> </div>
+                        <br>
+                        <div class="index.htmlheader__list-item"> <a class="header__list-link" href="index.html#achievements">Наши успехи</a> </div>
+                    </div>
+                    <ul class="footer__social">
+                        <li class="footer__social-item">
+                            <a class="footer__social-link" href="#">
+                                <picture> <img class="footer__social-link-img" src="images/tw.png" alt=""> </picture>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a class="footer__social-link" href="#">
+                                <picture> <img class="footer__social-link-img" src="images/li.png" alt=""> </picture>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a class="footer__social-link" href="#">
+                                <picture> <img class="footer__social-link-img" src="images/tw.png" alt=""> </picture>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a class="footer__social-link" href="#">
+                                <picture> <img class="footer__social-link-img" src="images/li.png" alt=""> </picture>
+                            </a>
+                        </li>
+                        <li class="footer__social-item">
+                            <a class="footer__social-link" href="#">
+                                <picture> <img class="footer__social-link-img" src="images/tw.png" alt=""> </picture>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="footer__contacts">
+                        <h4 class="footer__contacts-title">Контакты</h4>
+                        <br>
+                        <br>
+                        <p class="footer__contacts-address">55 East Birchwood Ave. Brooklyn, New York 11201</p> <a class="footer__contacts-email" href="mailto:contact@interno.com">contact@interno.com</a> <a href="tel:1234567890" class="footer__contacs-phone">(123) 456 - 7890</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        // Функция для плавного скролла
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
